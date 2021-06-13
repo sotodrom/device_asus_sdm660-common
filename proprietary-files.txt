@@ -394,6 +394,12 @@ vendor/lib64/libsdm-diag.so|2ba98c20d05e34501a4423f55bec4da3f27711ad
 vendor/lib64/libsdmextension.so|58518bd600b7ced736db072d858e862abd2f8f0f
 vendor/lib64/libtinyxml2_1.so|ff32deb110acb02cb5def5f3404f9064c1276483
 
+# Hotword enrollment
+-product/priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk|ff5b936acb63a78d4a62643d38ef4f9074a00a8e;PRESIGNED
+-product/priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk|4b710f4dab6eef900d337185675c6cdfc95eab0b;PRESIGNED
+system_ext/etc/permissions/com.android.hotwordenrollment.common.util.xml|563a58554d9c0dd0608552b644fbf74519a447bb
+system_ext/framework/com.android.hotwordenrollment.common.util.jar|0492cd3db2e253e23b78e56fa8ea7b3a4b15edeb
+
 # Keymaster
 vendor/bin/hw/android.hardware.keymaster@3.0-service-qti
 vendor/etc/init/android.hardware.keymaster@3.0-service-qti.rc
