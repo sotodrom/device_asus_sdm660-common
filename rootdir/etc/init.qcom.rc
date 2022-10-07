@@ -331,12 +331,6 @@ on property:sys.boot_completed=1
     # Enable ZRAM
     swapon_all /vendor/etc/fstab.qcom
 
-on property:persist.vendor.radio.atfwd.start=false
-    stop vendor.atfwd
-
-on property:vendor.radio.atfwd.start=false
-    stop vendor.atfwd
-
 on property:vold.decrypt=trigger_restart_framework
     restart vendor.camera-provider-2-4
     restart vendor.audio-hal-2-0
@@ -395,12 +389,6 @@ on property:sys.boot_completed=1
 
 on property:ro.vendor.ril.mbn_copy_completed=1
     write /data/vendor/radio/copy_complete 1
-
-service vendor.atfwd /vendor/bin/ATFWD-daemon
-    class late_start
-    user system
-    group system radio
-    task_profiles ServiceCapacityLow
 
 service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
     class core
