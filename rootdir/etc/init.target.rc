@@ -228,3 +228,11 @@ on property:sys.boot_completed=1
 
     # STOP EATING MY BATTERY AFTER 100H OF UPTIME FUCK YOU
     stop statsd
+
+on property:sys.boot_completed=1
+    restart time_daemon
+
+    # Defaults for power hints
+    write /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/hyst_trigger_count 3
+    write /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/hist_memory 20
+    write /sys/class/devfreq/soc:qcom,cpubw/min_freq 381
