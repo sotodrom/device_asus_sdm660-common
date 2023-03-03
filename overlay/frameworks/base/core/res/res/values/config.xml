@@ -324,4 +324,7 @@
          that have a HWC implementation that can apply the matrix passed to setColorTransform
          without impacting power, performance, and app compatibility (e.g. protected content). -->
     <bool name="config_nightDisplayAvailable">true</bool>
+
+    <!-- Whether to enable Lineage Health Service -->
+    <bool name="config_lineageHealthSupported">true</bool>
 </resources>
