@@ -402,22 +402,11 @@ service vendor.atfwd /vendor/bin/ATFWD-daemon
     group system radio
     task_profiles ServiceCapacityLow
 
-service charger /system/bin/charger
-    class charger
-    user system
-    group system graphics input
-    capabilities SYS_BOOT
-    seclabel u:r:charger:s0
-
 service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
     class core
     user root
     group root
     task_profiles ServiceCapacityLow
-
-on charger
-    setprop persist.sys.usb.config mass_storage
-    start qcom-post-boot
 
 service vendor.power_off_alarm /vendor/bin/power_off_alarm
     class core
