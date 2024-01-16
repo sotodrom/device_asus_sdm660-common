@@ -146,11 +146,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     RemovePackages
 
-# Fingerprint
-PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1 \
-    android.hardware.biometrics.fingerprint@2.1.vendor
-
 # FM
 PRODUCT_PACKAGES += \
     android.hardware.broadcastradio@1.0-impl
