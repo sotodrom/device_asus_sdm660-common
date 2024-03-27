@@ -42,4 +42,7 @@
     <string name="about_device_support_url">https://t.me/wzrdgrp</string>
     <string name="build_maintainer_summary">dotkit</string>
     <string name="build_maintainer_donate_url">https://link.dana.id/qr/asap5sr</string>
+
+    <!-- Show battery cycle count -->
+    <bool name="config_show_battery_cycle_count" translatable="false">true</bool>
 </resources>
