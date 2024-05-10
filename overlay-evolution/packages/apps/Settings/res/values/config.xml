@@ -37,4 +37,9 @@
          should be either LOW (1) or HIGH (3).
     -->
     <integer name="config_vibration_supported_intensity_levels">3</integer>
+
+    <!-- About device screen, build maintainer -->
+    <string name="about_device_support_url">https://t.me/wzrdgrp</string>
+    <string name="build_maintainer_summary">dotkit</string>
+    <string name="build_maintainer_donate_url">https://link.dana.id/qr/asap5sr</string>
 </resources>
