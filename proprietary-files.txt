@@ -20,7 +20,6 @@ vendor/lib64/libmdsprpc.so
 vendor/lib64/libsdsprpc.so
 
 # CDSP
-vendor/bin/cdsprpcd
 vendor/lib/libcdsp_default_listener.so
 vendor/lib/libcdsprpc.so
 vendor/lib/libsysmon_cdsp_skel.so
