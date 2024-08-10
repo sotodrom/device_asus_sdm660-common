@@ -21,6 +21,9 @@
      entries do not follow the convention, but all new entries should. -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Boolean indicating whether the wifi chipset has 5GHz frequency band support -->
+    <bool translatable="false" name="config_wifi5ghzSupport">false</bool>
+
     <!-- Boolean indicating whether 802.11r Fast BSS Transition is enabled on this platform -->
     <bool translatable="false" name="config_wifi_fast_bss_transition_enabled">true</bool>
 
@@ -29,6 +32,15 @@
          scan and wake the host when a configured SSID is detected by the dongle. This chipset
          capability can provide power savings when wifi needs to be always kept on. -->
     <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
+
+    <!-- Integer thresholds, do not connect to APs with RSSI lower than these values  -->
+    <integer translatable="false" name="config_wifi_framework_wifi_score_entry_rssi_threshold_24GHz">-80</integer>
+    <!-- Integer thresholds for low network score, should be somewhat less than the entry thresholds -->
+    <integer translatable="false" name="config_wifi_framework_wifi_score_bad_rssi_threshold_24GHz">-83</integer>
+
+    <!-- Boolean indicating whether or not to revert to default country code when cellular
+    radio is unable to find any MCC information to infer wifi country code from -->
+    <bool translatable="false" name="config_wifi_revert_country_code_on_cellular_loss">false</bool>
 
     <!-- Boolean indicating whether or not wifi should turn off when emergency call is made -->
     <bool translatable="false" name="config_wifi_turn_off_during_emergency_call">true</bool>
@@ -61,9 +73,23 @@
     <!-- Integer indicating maximum hardware supported client number of soft ap -->
     <integer translatable="false" name="config_wifiHardwareSoftapMaxClientCount">32</integer>
 
-    <!-- Boolean indicating whether framework needs to set the tx power limit for meeting SAR requirements -->
-    <bool translatable="false" name="config_wifi_framework_enable_sar_tx_power_limit">true</bool>
-    
-    <!-- Disable WPA2 to WPA3 auto-upgrade -->
-    <bool translatable="false" name="config_wifiSaeUpgradeEnabled">false</bool>
+    <!-- Integer delay in milliseconds before set wlan interface up during watchdog recovery -->
+    <integer name="config_wifi_framework_recovery_timeout_delay">3000</integer>
+
+    <!-- Enable adding minimum confirmation duration when sending network score to connectivity service. -->
+    <bool translatable="false" name="config_wifiMinConfirmationDurationSendNetworkScoreEnabled">true</bool>
+
+    <!-- Disable channel utilization estimation with fixed value.
+         b/160239223: Rx time is excluded in cca busy time and channel utilization is calculated
+         correctly during heavy DL traffic -->
+    <bool translatable="false" name="config_wifiChannelUtilizationOverrideEnabled">false</bool>
+
+    <!-- Whether to use the explicit vendor HAL API: IWifiStaIface.setRoamingState for disabling fw roaming. -->
+    <bool translatable="false" name="config_wifiUseHalApiToDisableFwRoaming">true</bool>
+
+    <!-- Indicate the driver support NL80211_REG_CHANGED event. -->
+    <bool translatable="false" name="config_wifiDriverSupportedNl80211RegChangedEvent">true</bool>
+
+    <!-- Indicate the device support request channel on Wi-Fi Aware data-path. -->
+    <bool translatable="false" name="config_wifiSupportChannelOnDataPath">true</bool>
 </resources>
