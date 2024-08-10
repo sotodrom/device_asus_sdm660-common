@@ -104,7 +104,6 @@ persist.vendor.camera.dual.isp.sync=0
 debug.cpurend.vsync=false
 debug.hwui.target_cpu_time_percent=30
 debug.hwui.use_hint_manager=true
-debug.hwui.skia_atrace_enabled=false
 debug.sf.enable_hwc_vds=1
 debug.sf.hw=1
 ro.hardware.egl=adreno
