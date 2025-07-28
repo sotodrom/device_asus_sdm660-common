@@ -141,7 +141,7 @@ drm.service.enabled=true
 vendor.fm.a2dp.conc.disabled=false
 
 # FRP
-ro.frp.pst=/dev/block/bootdevice/by-name/frp
+#ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
 # Graphics
 ro.hardware.egl=adreno

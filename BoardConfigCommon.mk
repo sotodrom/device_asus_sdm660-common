@@ -14,18 +14,26 @@ BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 # A/B
 AB_OTA_UPDATER := false
 
+# Art
+ART_BUILD_TARGET_NDEBUG := true
+ART_BUILD_TARGET_DEBUG := false
+ART_BUILD_HOST_NDEBUG := true
+ART_BUILD_HOST_DEBUG := false
+
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := cortex-a73
+TARGET_CPU_VARIANT := generic
+TARGET_CPU_VARIANT_RUNTIME := cortex-a73
 
 TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a73
+TARGET_2ND_CPU_VARIANT := generic
+TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a73
 
 # Audio
 AUDIO_FEATURE_ENABLED_EXT_AMPLIFIER := true
@@ -56,8 +64,8 @@ TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
 # Kernel
 BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 androidboot.console=ttyMSM0
 BOARD_KERNEL_CMDLINE += earlycon=msm_serial_dm,0xc170000 androidboot.hardware=qcom
-BOARD_KERNEL_CMDLINE += user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3
-BOARD_KERNEL_CMDLINE += sched_enable_hmp=1 sched_enable_power_aware=1
+BOARD_KERNEL_CMDLINE += msm_rtb.filter=0x37 ehci-hcd.park=3
+BOARD_KERNEL_CMDLINE += androidboot.boot_devices=soc/c0c4000.sdhci
 BOARD_KERNEL_CMDLINE += service_locator.enable=1 loop.max_part=7
 BOARD_KERNEL_CMDLINE += printk.devkmsg=on
 #BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
@@ -84,6 +92,8 @@ ODM_MANIFEST_SKUS += NFC
 ODM_MANIFEST_NFC_FILES := $(COMMON_PATH)/manifest_nfc.xml
 
 # Init
+#TARGET_INIT_VENDOR_LIB := //$(COMMON_PATH):libinit_sdm660
+$(call soong_config_set,libinit,vendor_init_lib,//$(COMMON_PATH):libinit_sdm660)
 TARGET_RECOVERY_DEVICE_MODULES := libinit_sdm660
 
 # Partitions
@@ -112,7 +122,7 @@ BOARD_ROOT_EXTRA_SYMLINKS := \
 
 # Platform
 TARGET_BOARD_PLATFORM := sdm660
-TARGET_ENFORCES_QSSI := true
+#TARGET_ENFORCES_QSSI := true
 
 # Power
 TARGET_USES_INTERACTION_BOOST := true
@@ -129,7 +139,11 @@ TARGET_VENDOR_PROP += $(COMMON_PATH)/vendor.prop
 BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
+BOARD_USES_FULL_RECOVERY_IMAGE := false
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+TARGET_RECOVERY_UI_BLANK_UNBLANK_ON_INIT := true
+TARGET_USES_MKE2FS := true
 
 # Releasetools
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_asus
@@ -147,11 +161,8 @@ PRODUCT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(COMMON_PATH)
 
-# Treble
-BOARD_VNDK_VERSION := current
-
 # Vendor Security patch level
-VENDOR_SECURITY_PATCH := 2020-12-05
+VENDOR_SECURITY_PATCH := 2025-05-05
 
 # Verity
 # Only needed for signing

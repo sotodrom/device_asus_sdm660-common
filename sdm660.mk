@@ -13,6 +13,8 @@ $(call inherit-product, vendor/asus/sdm660-common/sdm660-common-vendor.mk)
 # Default is nosdcard, S/W button enabled in resource
 PRODUCT_CHARACTERISTICS := nosdcard
 
+PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := true
+
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-impl \
@@ -90,7 +92,7 @@ PRODUCT_PACKAGES += \
 # Display
 PRODUCT_PACKAGES += \
     gralloc.sdm660 \
-    hwcomposer.sdm660 \
+    hwcomposer.qcom \
     libdisplayconfig \
     libtinyxml \
     libqdMetaData \
@@ -179,7 +181,7 @@ PRODUCT_PACKAGES += \
     libhwbinder.vendor
 
 # Init
-$(call soong_config_set,libinit,vendor_init_lib,//$(COMMON_PATH):libinit_sdm660)
+#$(call soong_config_set,libinit,vendor_init_lib,//$(COMMON_PATH):libinit_sdm660)
 
 # Input
 PRODUCT_COPY_FILES += \
@@ -260,15 +262,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
     libmm-omxcore \
-    libOmxAacEnc \
-    libOmxAmrEnc \
     libOmxCore \
-    libOmxEvrcEnc \
-    libOmxG711Enc \
-    libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVenc \
-    libstagefrighthw
+    libstagefrighthw \
+    libstagefright_softomx_plugin.vendor
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -339,7 +337,7 @@ PRODUCT_COPY_FILES += \
 
 # QNS
 PRODUCT_PACKAGES += \
-    libstdc++.vendor
+    libstdc++_vendor
 
 # QTI Performance
 PRODUCT_COPY_FILES += \
@@ -347,7 +345,6 @@ PRODUCT_COPY_FILES += \
 
 # Radio
 PRODUCT_PACKAGES += \
-    libprotobuf-cpp-full \
     librmnetctl \
     libsqlite.vendor \
     libsysutils.vendor \
@@ -414,11 +411,11 @@ PRODUCT_BOOT_JARS += \
 
 # Thermal
 PRODUCT_PACKAGES += \
-    android.hardware.thermal@2.0-service.qti
+    android.hardware.thermal-service.qti
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.3-service.basic
+    android.hardware.usb@1.3-service.dual_role_usb
 
 # Vibrator
 PRODUCT_PACKAGES += \
@@ -427,8 +424,8 @@ PRODUCT_PACKAGES += \
 # FIXME: master: compat for libprotobuf
 # See https://android-review.googlesource.com/c/platform/prebuilts/vndk/v28/+/1109518
 PRODUCT_PACKAGES += \
-    libprotobuf-cpp-full-vendorcompat \
-    libprotobuf-cpp-lite-vendorcompat
+    libprotobuf-cpp-full-3.9.1-vendorcompat \
+    libprotobuf-cpp-lite-3.9.1-vendorcompat
 
 # Wifi
 PRODUCT_PACKAGES += \
