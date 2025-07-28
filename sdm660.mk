@@ -178,6 +178,9 @@ PRODUCT_PACKAGES += \
     libhwbinder \
     libhwbinder.vendor
 
+# Init
+$(call soong_config_set,libinit,vendor_init_lib,//$(COMMON_PATH):libinit_sdm660)
+
 # Input
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl
@@ -206,6 +209,8 @@ PRODUCT_PACKAGES += \
 # Lineage Health
 PRODUCT_PACKAGES += \
     vendor.lineage.health-service.default
+
+$(call soong_config_set,lineage_health,charging_control_supports_bypass,false)
 
 # LiveDisplay native
 PRODUCT_PACKAGES += \
