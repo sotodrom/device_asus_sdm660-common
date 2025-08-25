@@ -55,9 +55,6 @@ TARGET_USES_ION := true
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
 
-# Encryption
-TARGET_HW_DISK_ENCRYPTION := true
-
 # EXFAT
 TARGET_EXFAT_DRIVER := exfat
 
@@ -162,9 +159,6 @@ SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(COMMON_PATH)
-
-# Treble
-BOARD_VNDK_VERSION := current
 
 # Vendor Security patch level
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)

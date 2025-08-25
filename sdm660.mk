@@ -7,6 +7,10 @@
 # Inherit the proprietary files
 $(call inherit-product, vendor/asus/sdm660-common/sdm660-common-vendor.mk)
 
+PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := true
+
+OVERRIDE_ENABLE_UFFD_GC := false
+
 # Include display HAL makefiles.
 include hardware/qcom-caf/msm8998/display/display-commonsys-intf/config/display-interfaces-product.mk
 include hardware/qcom-caf/msm8998/display/display-commonsys-intf/config/display-product-system.mk
@@ -66,6 +70,10 @@ PRODUCT_PACKAGES += \
     AntHalService-Soong \
     com.dsi.ant@1.0.vendor
 
+# API
+BOARD_SHIPPING_API_LEVEL := 30
+PRODUCT_SHIPPING_API_LEVEL := 27
+
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio-impl \
@@ -97,7 +105,8 @@ PRODUCT_PACKAGES += \
     libsuspend
 
 PRODUCT_PRODUCT_PROPERTIES += \
-    ro.charger.enable_suspend=true
+    ro.charger.enable_suspend=true \
+    ro.charger.disable_init_blank=true
 
 # ConfigStore
 PRODUCT_PACKAGES += \
@@ -437,6 +446,7 @@ PRODUCT_COPY_FILES += \
 # Sensors
 PRODUCT_PACKAGES += \
     libsensorndkbridge \
+    libpower.vendor \
     android.hardware.sensors@1.0-impl \
     android.hardware.sensors@1.0-service \
     android.frameworks.sensorservice@1.0 \
