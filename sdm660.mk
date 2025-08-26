@@ -9,6 +9,8 @@ $(call inherit-product, vendor/asus/sdm660-common/sdm660-common-vendor.mk)
 
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := true
 
+PRODUCT_ENABLE_UFFD_GC := false
+
 OVERRIDE_ENABLE_UFFD_GC := false
 
 # Include display HAL makefiles.
@@ -17,10 +19,6 @@ include hardware/qcom-caf/msm8998/display/display-commonsys-intf/config/display-
 
 # Default is nosdcard, S/W button enabled in resource
 PRODUCT_CHARACTERISTICS := nosdcard
-
-# AID/fs configs
-PRODUCT_PACKAGES += \
-    fs_config_files
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -105,7 +103,6 @@ PRODUCT_PACKAGES += \
     libsuspend
 
 PRODUCT_PRODUCT_PROPERTIES += \
-    ro.charger.enable_suspend=true \
     ro.charger.disable_init_blank=true
 
 # ConfigStore
@@ -195,8 +192,8 @@ PRODUCT_COPY_FILES += \
 
 # Health
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-service
+    android.hardware.health-service.qti\
+    android.hardware.health@2.1.vendor
 
 # HIDL
 PRODUCT_PACKAGES += \
@@ -237,7 +234,8 @@ PRODUCT_COPY_FILES += \
 # Keymaster
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0.vendor \
-    android.hardware.keymaster@4.1.vendor
+    android.hardware.keymaster@4.1.vendor \
+    libion.vendor
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -487,7 +485,7 @@ PRODUCT_BOOT_JARS += \
 
 # Thermal
 PRODUCT_PACKAGES += \
-    android.hardware.thermal@2.0-service.qti
+    android.hardware.thermal-service.qti
 
 # USB
 PRODUCT_PACKAGES += \
