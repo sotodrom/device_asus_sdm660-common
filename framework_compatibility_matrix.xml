@@ -87,9 +87,9 @@
         <instance>default</instance>
     </interface>
 </hal>
-<hal format="hidl" optional="true">
+<hal format="aidl" optional="true">
     <name>android.hardware.health</name>
-    <version>2.0-1</version>
+    <version>3</version>
     <interface>
         <name>IHealth</name>
         <instance>default</instance>
@@ -501,22 +501,20 @@
         <instance>default</instance>
     </interface>
 </hal>
-    <hal format="hidl">
-        <name>android.hardware.light</name>
-        <transport>hwbinder</transport>
-        <version>2.0</version>
-        <interface>
-            <name>ILight</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.vibrator</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IVibrator</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
+<hal format="hidl" optional="true">
+    <name>android.hardware.light</name>
+    <version>2.0</version>
+    <interface>
+        <name>ILight</name>
+        <instance>default</instance>
+    </interface>
+</hal>
+<hal format="hidl" optional="true">
+    <name>android.hardware.vibrator</name>
+    <version>1.0</version>
+    <interface>
+        <name>IVibrator</name>
+        <instance>default</instance>
+    </interface>
+</hal>
 </compatibility-matrix>
